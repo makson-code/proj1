@@ -13,7 +13,7 @@ export function SearchForm({ onSearch }) {
     <form onSubmit={handleSubmit(onSubmit)} className={s.searchForm}>
       <input
         {...register('q')}
-        placeholder="поиск"
+        placeholder="enter"
         defaultValue=""
         className={s.searchInput}
       />
