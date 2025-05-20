@@ -9,7 +9,8 @@ export function SearchForm({ onSearch }) {
     onSearch(formData.q);
   };
 
-  return (
+return (
+  <>
     <form onSubmit={handleSubmit(onSubmit)} className={s.searchForm}>
       <input
         {...register('q')}
@@ -19,5 +20,8 @@ export function SearchForm({ onSearch }) {
       />
       <button type="submit" className={s.searchButton}>Search</button>
     </form>
-  );
+
+    <div className={s.bottomStripe}></div>
+  </>
+);
 }

@@ -8,7 +8,7 @@ export function NewsPage() {
   const [filters, setFilters] = useState({
     country: 'us',         
     category: 'technology',
-    pageSize: 10,         
+    pageSize: 20,         
   });
 
 
@@ -22,30 +22,29 @@ export function NewsPage() {
   };
 
   return (
-    <div className={s.newsContainer}>
-      <SearchForm onSearch={handleSearch} />
+  <div className={s.newsContainer}>
+    <SearchForm onSearch={handleSearch} />
 
-      {isLoading && <div className="loading">Загрузка...</div>}
-      {error && <div className="error">Ошибка: {error.message}</div>}
-      {!data?.articles?.length && !isLoading && <div>Новостей не найдено</div>}
+    {isLoading && <div className="loading">Загрузка...</div>}
+    {error && <div className="error">Ошибка: {error.message}</div>}
+    {!isLoading && !data?.articles?.length && <div>Новостей не найдено</div>}
 
-      {data?.articles?.map(article => (
-        <div key={article.url} className={s.newsItem}>
-          <h3>{article.title}</h3>
-          {article.urlToImage && (
-            <img
-              src={article.urlToImage}
-              alt={article.title}
-              className={s.newsImage}
-            />
-          )}
-          <p>{article.description}</p>
-          <a href={article.url} target="_blank" rel="noopener noreferrer">
-            Читать полностью
-          </a>
-        </div>
-      ))}
-    </div>
-  );
+    {data?.articles?.map(article => (
+      <div key={article.url} className={s.newsItem}>
+        <h3>{article.title}</h3>
+        {article.urlToImage && (
+          <img
+            src={article.urlToImage}
+            alt={article.title}
+            className={s.newsImage}
+          />
+        )}
+        <p>{article.description}</p>
+        <a href={article.url} target="_blank" rel="noopener noreferrer">
+          Читать полностью
+        </a>
+      </div>
+    ))}
+  </div>
+);
 }
-
